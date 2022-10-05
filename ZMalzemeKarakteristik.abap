@@ -5,7 +5,7 @@
 *& ABAP ve diğer kurslarıma indirimli ulaşmak için link
 *& https://saitorhan.com/udemy-kurslarim/
 *& Kod açıklamaları için
-*& https://saitorhan.com/malzeme-karakteristikleri-toplu-goruntuleme-raporu/
+*& 
 *&---------------------------------------------------------------------*
 
 REPORT ZMalzemeKarakteristik.
