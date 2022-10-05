@@ -12,20 +12,20 @@ TABLES: MARA, MAKT, CABNT, CABN, T006A, AUSP.
 
 DATA: BEGIN OF GT_METADATAS OCCURS 0,
   MATNR LIKE MARA-MATNR, " Malzeme no
-  MAKTX LIKE MAKT-MAKTX, " Malzeme tanýmý
+  MAKTX LIKE MAKT-MAKTX, " Malzeme tanÄ±mÄ±
   atinn LIKE AUSP-ATINN, " karakteristik
-  ATBEZ LIKE CABNT-ATBEZ, " Karakteristik tanýmý
-  MSEHI LIKE CABN-MSEHI, "Ölçü Birimi
-  ATWRT LIKE AUSP-ATWRT, " Karakter karakteristik deðeri
-  ATFLV LIKE AUSP-ATFLV, " Sayýsal Alt deðer
-  ATFLB LIKE AUSP-ATFLB, " Sayýsal üst deðer
-  MSEH6 LIKE T006A-MSEH6, " Ölçü birimi teknik tanýmý
+  ATBEZ LIKE CABNT-ATBEZ, " Karakteristik tanÄ±mÄ±
+  MSEHI LIKE CABN-MSEHI, "Ã–lÃ§Ã¼ Birimi
+  ATWRT LIKE AUSP-ATWRT, " Karakter karakteristik deÄŸeri
+  ATFLV LIKE AUSP-ATFLV, " SayÄ±sal Alt deÄŸer
+  ATFLB LIKE AUSP-ATFLB, " SayÄ±sal Ã¼st deÄŸer
+  MSEH6 LIKE T006A-MSEH6, " Ã–lÃ§Ã¼ birimi teknik tanÄ±mÄ±
   SPRAS LIKE T006A-SPRAS, " dil
   ATFOR LIKE CABN-ATFOR, " veri tipi
-  ANZST LIKE CABN-ANZST, " Karakter uzunluðu
-  ANZDZ LIKE CABN-ANZDZ, " ondalýk karakter sayýsý
-  DEGER1 TYPE C LENGTH 10, " numerik deðer alt
-  DEGER2 TYPE C LENGTH 10, " numarik deðer üst
+  ANZST LIKE CABN-ANZST, " Karakter uzunluÄŸu
+  ANZDZ LIKE CABN-ANZDZ, " ondalÄ±k karakter sayÄ±sÄ±
+  DEGER1 TYPE C LENGTH 10, " numerik deÄŸer alt
+  DEGER2 TYPE C LENGTH 10, " numarik deÄŸer Ã¼st
   END OF GT_METADATAS.
 
 DATA: FCAT TYPE SLIS_T_FIELDCAT_ALV.
@@ -43,7 +43,7 @@ SELECTION-SCREEN END OF BLOCK PARAMETERS.
 
 START-OF-SELECTION.
   IF P_MATNR[] IS INITIAL AND P_MATKL[] IS INITIAL.
-    MESSAGE 'Malzeme numarasý veya Mal Grubundan biri girilmeli'
+    MESSAGE 'Malzeme numarasÄ± veya Mal Grubundan biri girilmeli'
     TYPE 'S' DISPLAY LIKE 'E'.
     CHECK 1 EQ 2.
   ENDIF.
@@ -97,7 +97,7 @@ FORM GETDATA .
       IMPORTING
         FLSTR = GT_METADATAS-DEGER1.
 
-    " Deðerleri tek kolonda görmek için atama yapýldý
+    " DeÄŸerleri tek kolonda gÃ¶rmek iÃ§in atama yapÄ±ldÄ±
     GT_METADATAS-ATWRT = GT_METADATAS-DEGER1.
 
     CALL FUNCTION 'FLTP_CHAR_CONVERSION'
@@ -184,17 +184,17 @@ FORM SET_FCAT .
       WHEN 'ATFLV'.
         FCATROW-TECH = 'X'.
       WHEN 'DEGER1'.
-        FCATROW-SELTEXT_S = 'Alt Deðer'.
-        FCATROW-SELTEXT_M = 'Alt Deðer'.
-        FCATROW-SELTEXT_L = 'Alt Deðer'.
-        FCATROW-REPTEXT_DDIC = 'Alt Deðer'.
+        FCATROW-SELTEXT_S = 'Alt DeÄŸer'.
+        FCATROW-SELTEXT_M = 'Alt DeÄŸer'.
+        FCATROW-SELTEXT_L = 'Alt DeÄŸer'.
+        FCATROW-REPTEXT_DDIC = 'Alt DeÄŸer'.
         FCATROW-TECH = 'X'.
 
       WHEN 'DEGER2'.
-        FCATROW-SELTEXT_S = 'Üst Deðer'.
-        FCATROW-SELTEXT_M = 'Üst Deðer'.
-        FCATROW-SELTEXT_L = 'Üst Deðer'.
-        FCATROW-REPTEXT_DDIC = 'Üst Deðer'.
+        FCATROW-SELTEXT_S = 'Ãœst DeÄŸer'.
+        FCATROW-SELTEXT_M = 'Ãœst DeÄŸer'.
+        FCATROW-SELTEXT_L = 'Ãœst DeÄŸer'.
+        FCATROW-REPTEXT_DDIC = 'Ãœst DeÄŸer'.
         FCATROW-TECH = 'X'.
     ENDCASE.
 
